@@ -11,7 +11,7 @@
     "action": {
         "default_popup": "popup.html",
         "default_icon": {
-            "32": "icon32x32.png"
+            "32": "./static/icon32x32.png"
         }
     }
 }
