@@ -6,7 +6,7 @@
     "background" : {
         "service_worker":  "background.js"
     },
-    "permissions": ["storage", "notifications", "alarms"],
+    "permissions": ["storage", "notifications", "alarms", "contextMenus", "tabs"],
     "host_permissions": ["https://iq.opengenus.org/*"],
     "action": {
         "default_popup": "popup.html",

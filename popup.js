@@ -52,12 +52,12 @@ chrome.storage.local.set({
 
 // Setting Alarm
 // Destroy first if there is any.
-
 chrome.alarms.clearAll((done) => {
     if (!done) {
-        console.log();
+        console.log("Clearing Alarm: \n" + chrome.runtime.lastError.message);
     }
 });
+
 chrome.storage.sync.get(["settings"], (settings) => {
     let time = settings.settings.refresh_time * minutes_hour * hours_day;
     console.log(time);
@@ -76,3 +76,5 @@ chrome.storage.local.get(["topics"], (cards) => {
         append_topic(cards[i]);
     }
 });
+
+

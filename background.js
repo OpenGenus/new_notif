@@ -8,7 +8,6 @@ async function load_topics() {
     ];
 
     //let res = await fetch("https://iq.opengenus.org/");
-    console.log("working...");
     //res = await res.text();
     return topics;
 }
@@ -23,10 +22,10 @@ chrome.runtime.onInstalled.addListener( function () {
             }
         }
     );
+    // last time opened
     chrome.storage.local.set({
         "last": Date.now()
     });
-    console.log("Setting default settings");
 
     // topics
     load_topics().then(topics => {
@@ -38,6 +37,13 @@ chrome.runtime.onInstalled.addListener( function () {
     // Initial alarm
     chrome.alarms.create("Initial Alarm", {
         "periodInMinutes": 1440
+    });
+
+    // contextMenu for easy access on extension
+    chrome.contextMenus.create({
+        "id": "open_iq",
+        "contexts": ["all"],
+        "title" : "Open OpenGenus",
     });
 });
 
@@ -59,15 +65,20 @@ chrome.alarms.onAlarm.addListener( function (alarm) {
     console.log(alarm);
 });
 
-// Extra
-chrome.runtime.onStartup.addListener( function () {
-    // when browser starts up
-});
-// Extra
-chrome.runtime.onSuspend.addListener( () => {
-    chrome.action.setBadgeText({"text": ""});
-});
+// Opening popup.html onclick of contextMenu
+chrome.contextMenus.onClicked.addListener(
+    (a, b) => {
+        chrome.tabs.create({
+            "active": true,
+            "url": "popup.html"
+        });
+    }
+);
 
-
-// Extra
-chrome.notifications.onClicked.addListener( () => {});
+// opening popup.html onclick of notification
+chrome.notifications.onClicked.addListener( (a, b) => {
+    chrome.tabs.create({
+        "active": true,
+        "url": "popup.html"
+    });
+});
