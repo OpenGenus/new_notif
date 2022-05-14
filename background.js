@@ -43,7 +43,7 @@ chrome.runtime.onInstalled.addListener( function () {
 
 // When alarm goes off Notify user to use IQNotify.
 chrome.alarms.onAlarm.addListener( function (alarm) {
-    chrome.storage.sync.get(["last"], (settings) => {
+    chrome.storage.local.get(["last"], (settings) => {
         let day = parseInt((Date.now() - settings.last) / 86400000);
         let s = "";
         if (day > 1) {
