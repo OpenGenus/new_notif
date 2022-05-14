@@ -1,0 +1,45 @@
+<head>
+    <script defer src="./popup.js"></script>
+    <link rel="stylesheet" href="./popup.css"></link>
+</head>
+
+<body>
+    <center>
+        <header>
+            <img id="head" src="https://iq.opengenus.org/assets/images/Logo.svg?v=8e6a37ae5a"
+                 alt="IQ Opengenus">
+            <button id="btn">
+                <img id="btn-img" src="./gear.png" alt="Settings">
+            </button>
+        </header>
+        <div id="tab-topics" class="tab">
+            <div id="card">
+
+            </div>
+        </div>
+        <div id="tab-settings" class="tab, hidden">
+            <label class="setting">
+                Theme:
+                <input type="checkbox">
+            </label><br>
+            <label class="setting">
+                Notification Style:
+                <input list="Notification-Styles">
+            </label><br>
+            <datalist id="Notification-Styles">
+                <option>Minimal</option>
+                <option>Medium</option>
+                <option>Full</option>
+            </datalist>
+            <label class="setting">
+                Sync Time(days):
+                <input type="number" step="1" min="1" value="1">
+            </label><br>
+            <label class="settings">
+                Load All
+                (Load all article details, helps IQ opengenus server to save data):
+                <input type="checkbox">
+            </label>
+        </div>
+    </center>
+</body>

@@ -1,0 +1,17 @@
+{
+    "name": "IQNotify",
+    "description": "Checks for articles on IQ Opengenus.",
+    "version": "0.1",
+    "manifest_version": 3,
+    "background" : {
+        "service_worker":  "background.js"
+    },
+    "permissions": ["storage", "notifications", "alarms"],
+    "host_permissions": ["https://iq.opengenus.org/*"],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "32": "icon32x32.png"
+        }
+    }
+}
