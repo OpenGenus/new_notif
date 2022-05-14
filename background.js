@@ -53,7 +53,7 @@ chrome.alarms.onAlarm.addListener( function (alarm) {
             "type": "basic",
             "title": "IQNotify reminder",
             "message": "It's been " + day + " day" + s + " seens you opened up IQNotify.",
-            "iconUrl": "./icon32x32.png",
+            "iconUrl": "./static/icon32x32.png",
         });
     });
     console.log(alarm);
