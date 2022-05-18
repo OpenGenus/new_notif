@@ -1,35 +1,13 @@
 // Declared codes, (code that only runs when called)
 
-const hours_day = 24;
-const millis_hour = 3600000;
-const minutes_hour = 60;
-const millis_minute = 60000;
-const settings_src = "./static/gear.png";
-const topic_src = "./static/back.png";
+const millis_day = 86400000;
 const topics = document.getElementById("tab-topics");
-const settings = document.getElementById("tab-settings");
-const change_btn = document.getElementById("btn");
-const btn_img = document.getElementById("btn-img");
-let hidden = "tab";
-//
-change_btn.addEventListener("click", () => {
-    if (hidden === "settings") {
-        hidden = "topics";
-        // button
-        btn_img.alt = "Settings";
-        btn_img.src = settings_src;
-        // tabs
-        settings.classList = ["tab", " hidden"];
-        topics.classList = ["tab"];
-    } else {
-        hidden = "settings";
-        // button
-        btn_img.alt = "Topics";
-        btn_img.src = topic_src;
-        // tabs
-        settings.classList = ["tab"];
-        topics.classList = ["tab", " hidden"];
-    }
+const to_settings_btn = document.getElementById("btn");
+to_settings_btn.addEventListener('click', ()=> {
+    chrome.tabs.create({
+        "active": true,
+        "url": "settings.html"
+    });
 });
 
 // function to write topics on popup.html
@@ -59,7 +37,7 @@ chrome.alarms.clearAll((done) => {
 });
 
 chrome.storage.sync.get(["settings"], (settings) => {
-    let time = settings.settings.refresh_time * minutes_hour * hours_day;
+    let time = settings.settings.refresh_time * millis_day;
     console.log(time);
     chrome.alarms.create({
         "periodInMinutes": time
