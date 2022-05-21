@@ -16,9 +16,12 @@ chrome.runtime.onInstalled.addListener( function () {
     // set settings
     chrome.storage.sync.set(
         {
-            "settings": {
-                "theme" : "light",
-                "refresh_time" : 1,
+            "theme" : "light",
+            "refresh_time" : 1,
+            "notif_verbosity" : 2,
+            "load" : {
+                "load_all" : true,
+                "load_num" : 0
             }
         }
     );
@@ -67,7 +70,7 @@ chrome.alarms.onAlarm.addListener( function (alarm) {
 
 // Opening popup.html onclick of contextMenu
 chrome.contextMenus.onClicked.addListener(
-    (a, b) => {
+    (_a, _b) => {
         chrome.tabs.create({
             "active": true,
             "url": "popup.html"
@@ -76,7 +79,7 @@ chrome.contextMenus.onClicked.addListener(
 );
 
 // opening popup.html onclick of notification
-chrome.notifications.onClicked.addListener( (a, b) => {
+chrome.notifications.onClicked.addListener( (_a, _b) => {
     chrome.tabs.create({
         "active": true,
         "url": "popup.html"
