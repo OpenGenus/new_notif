@@ -1,6 +1,6 @@
 // Declared codes, (code that only runs when called)
 
-const millis_day = 86400000;
+const minutes_day = 1440;
 const topics = document.getElementById("tab-topics");
 const to_settings_btn = document.getElementById("btn");
 to_settings_btn.addEventListener('click', ()=> {
@@ -37,7 +37,7 @@ chrome.alarms.clearAll((done) => {
 });
 
 chrome.storage.sync.get(["settings"], (settings) => {
-    let time = settings.settings.refresh_time * millis_day;
+    let time = settings.settings.refresh_time * minutes_day;
     console.log(time);
     chrome.alarms.create({
         "periodInMinutes": time
