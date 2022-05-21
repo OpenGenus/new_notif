@@ -1,17 +1,45 @@
 const radio_light_theme = document.getElementById("radio-light-theme");
 const radio_dark_theme = document.getElementById("radio-dark-theme");
 const time = document.getElementById("time");
-const radio_minimal = document.getElementById("radio-minimal");
-const radio_medium = document.getElementById("radio-medium");
-const radio_full = document.getElementById("radio-full");
+const radio_minimal = document.getElementById("radio-0");
+const radio_medium = document.getElementById("radio-1");
+const radio_full = document.getElementById("radio-2");
 const load_all = document.getElementById("load-all");
 const load_by_num = document.getElementById("load-by-num");
+
+
+// The page should show the current settings when loaded....
+chrome.storage.sync.get(["theme", "load", "notif_verbosity", "refresh_time"], (settings) => {
+    let theme = settings.theme;
+    let load = settings.load;
+    let notif = settings.notif_verbosity;
+    let re_time = settings.refresh_time;
+
+    if (theme === "light") {
+        radio_light_theme.checked = true;
+    } else {
+        radio_dark_theme.checked = true;
+    }
+
+    //
+    if (load.load_all) {
+        load_all.checked = true;
+    } else {
+        load_all.checked = false;
+        load_by_num.value = load.load_num;
+    }
+
+    // notification verbosity
+    document.getElementById("radio-" + notif).checked = true;
+    time.value = re_time;
+});
 
 // SETTINGS
 // setting steps
 // 1. event occured
 // 2. detect and store the change to sync storage
 // 3. let background.js make the real time effects.
+
 // theme light/dark
 radio_dark_theme.addEventListener('click', () => {
     chrome.storage.sync.set({
@@ -63,17 +91,19 @@ load_all.addEventListener('click', function () {
         chrome.storage.sync.set({
             "load": {
                 "load_all": false,
-                "load_num" : load_by_num.value
+                "load_num": parseInt(load_by_num.value)
             }
         });
     }
 });
 
 load_by_num.addEventListener('change', function () {
-    chrome.storage.sync.set({
-        "load": {
-            "load_all": false,
-            "load_num": 25
-        }
-    });
+    if (!load_all.checked) {
+        chrome.storage.sync.set({
+            "load": {
+                "load_all": false,
+                "load_num": parseInt(load_by_num.value)
+            }
+        });
+    }
 });
