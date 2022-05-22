@@ -70,7 +70,7 @@ chrome.alarms.onAlarm.addListener( function (alarm) {
 
 // Opening popup.html onclick of contextMenu
 chrome.contextMenus.onClicked.addListener(
-    (_a, _b) => {
+    () => {
         chrome.tabs.create({
             "active": true,
             "url": "popup.html"
@@ -79,9 +79,10 @@ chrome.contextMenus.onClicked.addListener(
 );
 
 // opening popup.html onclick of notification
-chrome.notifications.onClicked.addListener( (_a, _b) => {
+chrome.notifications.onClicked.addListener( () => {
     chrome.tabs.create({
         "active": true,
         "url": "popup.html"
     });
 });
+

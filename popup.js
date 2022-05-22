@@ -36,8 +36,8 @@ chrome.alarms.clearAll((done) => {
     }
 });
 
-chrome.storage.sync.get(["settings"], (settings) => {
-    let time = settings.settings.refresh_time * minutes_day;
+chrome.storage.sync.get(["refresh_time"], (settings) => {
+    let time = settings.refresh_time * minutes_day;
     console.log(time);
     chrome.alarms.create({
         "periodInMinutes": time

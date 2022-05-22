@@ -57,6 +57,9 @@ time.addEventListener('change', function () {
     chrome.storage.sync.set({
         "refresh_time": this.value
     });
+    // settings new alarm
+    chrome.alarms.clearAll();
+    chrome.alarms.create({ "periodInMinutes" : this.value * 1440 });
 });
 
 // Notification verbosity level
