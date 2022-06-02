@@ -1,0 +1,84 @@
+<head>
+    <script defer src="./settings.js"></script>
+    <link rel="stylesheet" href="./settings.css"></link>
+    <link id="theme" rel="stylesheet" href="./settings-light.css"></link>
+</head>
+<body>
+    <center>
+        <header>
+            <span id="head-name">OPENGENUS</span>
+            <img id="head-img" src="../static/page_icon.png"
+                    alt="IQ Opengenus">
+        </header>
+        <div id="settings">
+            <!--  -->
+            <div class ="setting">
+                <h1 class="settings-head"> Theme: </h1>
+                <pre class="settings-description"></pre>
+                <label>
+                    <pre class="label-description"></pre>
+                    <input id="radio-dark-theme" type="radio" name="theme">
+                    Dark
+                </label><br>
+                <label>
+                    <pre class="label-description"></pre>
+                    <input id="radio-light-theme" type="radio" name="theme">
+                    Light
+                </label>
+            </div>
+
+            <!--  -->
+            <div class="setting">
+                <h1 class="settings-head">Sync Time(days):</h1>
+                <pre class="settings-description"></pre>
+                <select id="time">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                </select>
+            </div>
+
+            <!--  -->
+            <div class="setting">
+                <h1 class="settings-head">Notification Style:</h1>
+                <pre class="settings-description"></pre>
+                <label>
+                    <pre class="label-description"></pre>
+                    <input id="radio-0" type="radio" name="notif">
+                    Minimal
+                </label><br>
+                <label>
+                    <pre class="label-description"></pre>
+                    <input id="radio-1" type="radio" name="notif">
+                    Medium
+                </label><br>
+                <label>
+                    <pre class="label-description"></pre>
+                    <input id="radio-2" type="radio" name="notif">
+                    Full
+                </label>
+            </div>
+
+
+            <!--
+            <div class="setting">
+                <h1 class="settings-head">Articles stored locally:</h1>
+                <pre class="settings-description">Load all article details, helps IQ opengenus server to save data</pre>
+                <label>
+                    <pre class="label-description"></pre>
+                    <input id="load-all" type="checkbox">
+                    Load All
+                </label><br>
+                <label>
+                    <pre class="label-description">Number of recent articles to load</pre>
+                    <input id="load-by-num" type="number" step="25" min="25" value="0">
+                </label><br>
+            </div>
+            -->
+        </div>
+    </center>
+</body>
