@@ -53,6 +53,7 @@ radio_light_theme.addEventListener('click', () => {
 
 // refresh and remind (days)
 time.addEventListener('change', function () {
+    console.log(this.value);
     chrome.storage.sync.set({
         "refresh_time": this.value
     });

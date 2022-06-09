@@ -42,3 +42,63 @@ header {
     padding-top: 3%;
     margin-bottom: 5%;
 }
+
+/*
+  settings checkbox
+ */
+
+#theme-setting {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100;
+}
+
+.toggle-button input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.toggle-button {
+    width: 30;
+    height: 20;
+    border: 1px;
+    display: inline-block;
+    position: relative;
+}
+
+.slider {
+    position: absolute;
+    background: #aaa;
+    border-radius: 10px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    transition: 0.19s;
+}
+
+.slider::before {
+    position: absolute;
+    content: " ";
+    width: 12;
+    height: 12;
+    background: white;
+    border-radius: 6px;
+    left: 4px;
+    bottom: 4px;
+    top: 4px;
+    transition: 0.19s;
+}
+
+
+.toggle-button input:checked + .slider {
+    background: linear-gradient(135deg, #351ded 0, #5e46c9 45%, #05abe0 70%);
+}
+
+
+.toggle-button input:checked + .slider::before {
+    right: 4px;
+    left: 14px;
+}
