@@ -24,9 +24,11 @@ function append_topic(topic) {
 
 // Since this runs everytime user opens the popup
 // So, noting the time.
-chrome.storage.local.set({
+setTimeout(1000, chrome.storage.local.set({
     "last": Date.now()
-});
+}));
+
+
 
 // Setting Alarm
 // Destroy first if there is any.
