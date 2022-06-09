@@ -94,7 +94,7 @@ header {
 
 
 .toggle-button input:checked + .slider {
-    background: linear-gradient(135deg, #351ded 0, #5e46c9 45%, #05abe0 70%);
+    background: linear-gradient(135deg, #351ded 0, #5e46c9 25%, #05abe0 100%);
 }
 
 

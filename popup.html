@@ -1,7 +1,7 @@
 <head>
     <script defer src="./popup.js"></script>
-    <link rel="stylesheet" href="./page.css"></link>
     <link rel="stylesheet" href="./page.css">
+    <!-- <link rel="stylesheet" href="./articles.css"> -->
     <meta
         http-equiv="Content-Security-Policy"
         content="script-src 'self' 'unsafe-eval'">
@@ -10,13 +10,94 @@
 <body>
     <center>
         <header>
-            <img id="head" src="https://iq.opengenus.org/assets/images/Logo.svg"
-                 alt="IQ Opengenus">
-            <button id="btn">
-                <img id="btn-img" src="./static/gear.png" alt="Settings">
-            </button>
+            <div id="head">
+                <span id="head-name">OPENGENUS</span>
+                <img id="head-img" src="static/page_icon.png" alt="IQ Opengenus">
+            </div>
+            <p>In 1970s, Computing was not a science. Thanks to the legends who made it is as important as Physics & Mathematics. We are a Scientific Community focused on Computing Research & Publishing.</p>
+            <div id="buttons">
+                <input id="search-bar" type="text" placeholder="Search">
+                <button id="search">
+                    <img id="btn-img" src="./static/search.png" alt="Settings">
+                </button>
+                <button id="btn">
+                    <img id="btn-img" src="./static/gear.png" alt="Settings">
+                </button>
+            </div>
         </header>
         <div id="tab-topics" class="tab">
+            <!-- Sample articles, Of course they should be created by js -->
+            <!--
+                 Since each article contains
+                    an image
+                    a suitable tag
+                    Title
+                    Description
+                    author( image, name )
+
+                 And if we put above elements in Verbosity Level
+                 > Level 1 ( Minimal )
+                    ( Title Description author(name) )
+                 > Level 2 ( Medium )
+                    ( Tag Title Description author(image, name) )
+                 > Level 3 ( Full )
+                    ( Image (Medium) )
+            -->
+<!-- 
+            <div class="minimal article-preview">
+                <img class="article-image" src="example_article_image/image.svg">
+                <div class="article-info">
+                    <div class="article-tag">JAVA</div>
+                    <div class="article-title">Mappings in Hibernate</div>
+                    <p>This article explains and shows examples of mapping of relations between entity classes in application to relationships between database tables, including standard to SQL databases one-to-many, many-to-one, one-to-one, and many-to-many relationships in Hibernate.</p>
+                </div>
+
+                <div class="article-author">
+                    <img src="example_article_image/profile.png">
+                    <span>ANNA BURDANOVA</span>
+                </div>
+            </div>
+            <div class="medium article-preview">
+                <img class="article-image" src="example_article_image/image-2.svg">
+                <div class="article-info">
+                    <div class="article-tag">ALGORITHMS</div>
+                    <div class="article-title">Design and Analysis of Algorithms (DAA) [Syllabus]</div>
+                    <p>This article presents the detailed Syllabus of the subject "Design and Analysis of Algorithms (DAA)" also known as "Data Structure and Algorithms (DSA)". This subject is taught in Bachelor of Science or Bachelor of Technology course in Computer Science.</p>
+                </div> 
+
+                <div class="article-author">
+                    <img src="example_article_image/profile-2.jpg">
+                    <span>UE KIAO, PHD</span>
+                </div>
+            </div>
+            <div class="full article-preview">
+                <img class="article-image" src="example_article_image/image-3.png">
+                <div class="article-info">
+                    <div class="article-tag">PROBLEMS ON BINARY TREE</div>
+                    <div class="article-title">Boundary Traversal of Binary Tree</div>
+                    <p>In this article, we have explored the approach of Boundary Traversal of Binary Tree along with Time and Space Complexity.</p>
+                </div>
+                <div class="article-author">
+                    <img src="example_article_image/profile-3.jpg">
+                    <span>SHUBHANKAR MAURYA</span>
+                </div>
+            </div>
+
+
+            <div class="full article-preview">
+                <img class="article-image" src="example_article_image/image-3.png">
+                <div class="article-info">
+                    <div class="article-tag">PROBLEMS ON BINARY TREE</div>
+                    <div class="article-title">Boundary Traversal of Binary Tree</div>
+                    <p>In this article, we have explored the approach of Boundary Traversal of Binary Tree along with Time and Space Complexity.</p>
+                </div>
+                <div class="article-author">
+                    <img src="example_article_image/profile-3.jpg">
+                    <span>SHUBHANKAR MAURYA</span>
+                </div>
+            </div>
+-->
         </div>
+            </div>
     </center>
 </body>
