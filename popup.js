@@ -1,12 +1,11 @@
 // Declared codes, (code that only runs when called)
-
 const minutes_day = 1440;
 const topics = document.getElementById("tab-topics");
 const to_settings_btn = document.getElementById("btn");
 to_settings_btn.addEventListener('click', ()=> {
     chrome.tabs.create({
         "active": true,
-        "url": "settings.html"
+        "url": "settings/settings.html"
     });
 });
 
