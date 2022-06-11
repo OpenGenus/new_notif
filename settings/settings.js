@@ -30,7 +30,11 @@ chrome.storage.sync.get(["theme", "load", "notif_verbosity", "refresh_time"], (s
 
     // notification verbosity
     document.getElementById("radio-" + notif).checked = true;
-    time.value = re_time;
+    var s = "s";
+    if (re_time == 1) {
+        s = "";
+    }
+    time_option.value = re_time + " day" + s;
 });
 
 // SETTINGS
@@ -53,13 +57,14 @@ theme_checkbox.addEventListener('change', function () {
 
 // refresh and remind (days)
 time.addEventListener('change', function () {
-    console.log(this.value);
+    var selected_time = parseInt(this.value[0]);
+    console.log(selected_time);
     chrome.storage.sync.set({
-        "refresh_time": this.value
+        "refresh_time": selected_time
     });
     // settings new alarm
     chrome.alarms.clearAll();
-    chrome.alarms.create({ "periodInMinutes" : this.value * 1440 });
+    chrome.alarms.create({ "periodInMinutes" : selected_time * 1440 });
 });
 
 // Notification verbosity level

@@ -3,6 +3,19 @@
     src: url('../static/Dosis/Dosis-ExtraLight.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'DosisMedium';
+    src: url('../static/Dosis/Dosis-Medium.ttf') format('truetype');
+}
+h1 {
+    font-size: 34px;
+}
+
+* {
+    font-size: 18px;
+    font-family: 'DosisMedium'
+}
+
 
 body {
     background-color: #f4f8fb;
@@ -51,7 +64,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100;
+    width: 130;
 }
 
 .toggle-button input {
@@ -101,4 +114,14 @@ header {
 .toggle-button input:checked + .slider::before {
     right: 4px;
     left: 14px;
+}
+
+/*
+  settings options
+*/
+
+#time {
+    width: 80px;
+    padding: 2px;
+    padding-left: 7px;
 }
