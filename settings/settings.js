@@ -1,6 +1,5 @@
-const radio_light_theme = document.getElementById("radio-light-theme");
-const radio_dark_theme = document.getElementById("radio-dark-theme");
-const time = document.getElementById("time");
+const theme_checkbox = document.getElementById("theme_checkbox");
+const time_option = document.getElementById("time");
 const radio_minimal = document.getElementById("radio-0");
 const radio_medium = document.getElementById("radio-1");
 const radio_full = document.getElementById("radio-2");
@@ -15,9 +14,9 @@ chrome.storage.sync.get(["theme", "load", "notif_verbosity", "refresh_time"], (s
     let re_time = settings.refresh_time;
 
     if (theme === "light") {
-        radio_light_theme.checked = true;
+        theme_checkbox.checked = false;
     } else {
-        radio_dark_theme.checked = true;
+        theme_checkbox.checked = true;
     }
 
     //
@@ -40,14 +39,15 @@ chrome.storage.sync.get(["theme", "load", "notif_verbosity", "refresh_time"], (s
 // 2. detect and store the change to sync storage
 
 // theme light/dark
-radio_dark_theme.addEventListener('click', () => {
+theme_checkbox.addEventListener('change', function () {
+    var theme = "";
+    if (this.checked) {
+        theme = "dark";
+    } else {
+        theme = "light";
+    }
     chrome.storage.sync.set({
-        "theme": "dark"
-    });
-});
-radio_light_theme.addEventListener('click', () => {
-    chrome.storage.sync.set({
-        "theme": "light"
+        "theme": theme
     });
 });
 
