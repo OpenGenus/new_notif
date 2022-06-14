@@ -51,21 +51,29 @@ chrome.runtime.onInstalled.addListener( function () {
 });
 
 // When alarm goes off Notify user to use IQNotify.
+// with a delay.
 chrome.alarms.onAlarm.addListener( function (alarm) {
-    chrome.storage.local.get(["last"], (settings) => {
-        let day = parseInt((Date.now() - settings.last) / 86400000);
-        let s = "";
-        if (day > 1) {
-            s = "'s";
-        }
-        chrome.notifications.create({
-            "type": "basic",
-            "title": "IQNotify reminder",
-            "message": "It's been " + day + " day" + s + " seens you opened up IQNotify.",
-            "iconUrl": "./static/icon32x32.png",
+    if (alarm.name == "normal") {
+        chrome.storage.local.get(["last"], (settings) => {
+            let day = parseInt((Date.now() - settings.last) / 86400000);
+            let s = "";
+            if (day > 1) {
+                s = "'s";
+            }
+            chrome.notifications.create({
+                "type": "basic",
+                "title": "IQNotify reminder",
+                "message": "It's been " + day + " day" + s + " seens you opened up IQNotify.",
+                "iconUrl": "./static/icon32x32.png",
+            });
         });
-    });
-    console.log(alarm);
+        // console.log("notif should show up");
+    } else {
+        chrome.alarms.create("normal", {
+            "delayInMinutes": 30 // default
+        });
+        // console.log("creating normal");
+    }
 });
 
 // Opening popup.html onclick of contextMenu
