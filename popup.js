@@ -23,39 +23,27 @@ function append_topic(topic) {
 
 // Since this runs everytime user opens the popup
 // So, noting the time.
-setTimeout(
-    function () {
-        chrome.storage.local.set({
-            last: Date.now()
-        });
-    }
-    , 1000);
+chrome.storage.local.set({
+    last: Date.now()
+});
 
 // Setting Alarm
 // Destroy first if there is any.
-chrome.alarms.clearAll((done) => {
-    if (!done) {
-        console.log("Clearing Alarm: \n" + chrome.runtime.lastError.message);
-    }
-});
+chrome.alarms.clearAll();
 
-chrome.storage.sync.get(["refresh_time"], (settings) => {
-    let time = settings.refresh_time * minutes_day;
-    console.log(time);
-    chrome.alarms.create({
-        "periodInMinutes": time
+// chrome.storage.local.get(["topics"], (cards) => {
+//     cards = cards.topics;
+//     for (let i in cards) {
+//         append_topic(cards[i]);
+//     }
+// });
+
+
+// Create checklist
+const checklist_tab = document.getElementById("tab-checklist");
+const url = chrome.runtime.getURL("./checklist.json");
+fetch(url)
+    .then((res) => res.json())
+    .then((checklist) => {
+        console.log(checklist);
     });
-});
-
-
-// chrome.action.setBadgeText({text: "1"});
-// chrome.notifications.getPermissionLevel(level => {console.log(level);});
-
-chrome.storage.local.get(["topics"], (cards) => {
-    cards = cards.topics;
-    for (let i in cards) {
-        append_topic(cards[i]);
-    }
-});
-
-

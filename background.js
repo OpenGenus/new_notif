@@ -26,7 +26,7 @@ chrome.runtime.onInstalled.addListener( function () {
         }
     );
     // last time opened
-    chrome.storage.local.set({
+    chrome.storage.sync.set({
         "last": Date.now()
     });
 
@@ -50,29 +50,64 @@ chrome.runtime.onInstalled.addListener( function () {
     });
 });
 
+// Notifying if time the chose time for notification has been exceeded
+chrome.runtime.onStartup.addListener(
+    function () {
+        chrome.storage.sync.get(["last", "refresh_time"],
+                                 (settings) =>
+                                 {
+                                     let last = settings.last;
+                                     let refresh_day = settings.refresh_time;
+                                     // days passed since last opened.
+                                     for (let i in 100) {}
+                                     let diff = Date.now() - last / 86400000;
+                                     let days = parseInt( (Date.now() - last) / 86400000);
+                                     // clear Alarms if there are from previous session.
+                                     chrome.alarms.clearAll();
+                                     // Now new alarm that should be fired with some delay.
+                                     if ( days >= refresh_day) {
+                                         chrome.alarms.create("A delay Alarm", {
+                                             "delayInMinutes": 30 // default time for now.
+                                         });
+                                         console.log("created alarm!");
+                                     }
+                                 });
+    }
+);
+
 // When alarm goes off Notify user to use IQNotify.
 // with a delay.
 chrome.alarms.onAlarm.addListener( function (alarm) {
-    if (alarm.name == "normal") {
+    if (alarm.name == "A delay Alarm") {
         chrome.storage.local.get(["last"], (settings) => {
-            let day = parseInt((Date.now() - settings.last) / 86400000);
-            let s = "";
-            if (day > 1) {
-                s = "'s";
-            }
+            last = settings.last;
+            let diff = Date.now() - last;
+            let day = parseInt((Date.now() - last) / 86400000);
+            // days or day
+            let s = () => { if (day > 1) { return "s"; } else { return ""; } };
             chrome.notifications.create({
                 "type": "basic",
                 "title": "IQNotify reminder",
-                "message": "It's been " + day + " day" + s + " seens you opened up IQNotify.",
+                "message": "It's been " + day + " day" + s() + " seens you opened up IQNotify.",
                 "iconUrl": "./static/icon32x32.png",
             });
         });
-        // console.log("notif should show up");
-    } else {
-        chrome.alarms.create("normal", {
-            "delayInMinutes": 30 // default
+    } else if (alarm.name == "Initial Alarm") {
+        chrome.notifications.create({
+            "type": "basic",
+            "title": "IQNotify reminder",
+            "message": "You haven't opened the IQNotify, Click on this to open it now.",
+            "iconUrl": "./static/icon32x32.png",
         });
-        // console.log("creating normal");
+    } else {
+        console.log("Alarm Issue!");
+        console.log(alarm);
+        chrome.notifications.create({
+            "type": "basic",
+            "title" : "test Notif",
+            "message": alarm.name,
+            "iconUrl": "./static/icon32x32.png"
+        });
     }
 });
 

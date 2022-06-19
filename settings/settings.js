@@ -31,7 +31,7 @@ chrome.storage.sync.get(["theme", "load", "notif_verbosity", "refresh_time"], (s
     // notification verbosity
     document.getElementById("radio-" + notif).checked = true;
     var s = "s";
-    if (re_time == 1) {
+    if (re_time <= 1) {
         s = "";
     }
     time_option.value = re_time + " day" + s;
@@ -62,9 +62,6 @@ time.addEventListener('change', function () {
     chrome.storage.sync.set({
         "refresh_time": selected_time
     });
-    // settings new alarm
-    chrome.alarms.clearAll();
-    chrome.alarms.create({ "periodInMinutes" : selected_time * 1440 });
 });
 
 // Notification verbosity level
