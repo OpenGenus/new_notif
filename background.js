@@ -16,6 +16,7 @@ chrome.runtime.onInstalled.addListener( function () {
     // set settings
     chrome.storage.sync.set(
         {
+            "last": Date.now(),
             "theme" : "light",
             "refresh_time" : 1,
             "notif_verbosity" : 2,
@@ -25,10 +26,6 @@ chrome.runtime.onInstalled.addListener( function () {
             }
         }
     );
-    // last time opened
-    chrome.storage.sync.set({
-        "last": Date.now()
-    });
 
     // topics
     load_topics().then(topics => {
