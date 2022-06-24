@@ -56,8 +56,6 @@ chrome.runtime.onStartup.addListener(
                                      let last = settings.last;
                                      let refresh_day = settings.refresh_time;
                                      // days passed since last opened.
-                                     for (let i in 100) {}
-                                     let diff = Date.now() - last / 86400000;
                                      let days = parseInt( (Date.now() - last) / 86400000);
                                      // clear Alarms if there are from previous session.
                                      chrome.alarms.clearAll();
@@ -78,7 +76,6 @@ chrome.alarms.onAlarm.addListener( function (alarm) {
     if (alarm.name == "A delay Alarm") {
         chrome.storage.local.get(["last"], (settings) => {
             last = settings.last;
-            let diff = Date.now() - last;
             let day = parseInt((Date.now() - last) / 86400000);
             // days or day
             let s = () => { if (day > 1) { return "s"; } else { return ""; } };
