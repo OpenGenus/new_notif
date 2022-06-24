@@ -47,3 +47,14 @@ fetch(url)
     .then((checklist) => {
         console.log(checklist);
     });
+let checklist_checkbox = document.querySelectorAll(".plus-minus-checkbox");
+let checklist_topic_descs = document.getElementsByClassName("topic-desc");
+// console.log(checklist_checkbox);
+// console.log(checklist_topic_descs);
+for (let topic in checklist_checkbox) {
+    // console.log(checklist_checkbox[topic]);
+    // console.log(checklist_topic_descs[topic].classList.toggle("topic-hide"));
+    checklist_checkbox[topic].addEventListener('click', function () {
+        checklist_topic_descs[topic].classList.toggle("topic-hide");
+    });
+}
