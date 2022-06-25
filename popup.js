@@ -43,40 +43,6 @@ chrome.alarms.clearAll();
 const checklist_tab = document.getElementById("tab-checklist");
 const url = chrome.runtime.getURL("./checklist.json");
 
-// function get_topics(topics) {
-//     let topics_head = "<div class='topic'>\n";
-//     topics.forEach((topic) => {
-//         let topic_heading = `<div class='topic-head'>
-//                             <input type='checkbox'>
-//                             <h3 class='topic-title'>\n${topic.title}
-//                             </h3>
-//                             <label class='plus-minus-btn'>
-//                                 <input class='plus-minus-checkbox' type='checkbox'>
-//                                 <span class='vertical'></span>
-//                                 <span class='horizontal'></span>
-//                             </label>
-//                         </div>\n`;
-//         let topic_info = `<p class='topic-desc topic-hide'>${topic.info}</p></div>\n`;
-//         topics_head += topic_heading + topic_info;
-//     });
-//     return topics_head + "\n</div>";
-//    }
-
-// function get_subtopics(subtopics) {
-//     let subtopics_head = "<div class='sub-topics'>\n";
-//     let topics = get_topics(subtopics);
-//     let subtopics_tail = "\n</div>";
-//     return subtopics_head + topics + subtopics_tail;
-// }
-
-// function get_container(container) {
-//     let container_head = "<div class='container'>\n";
-//     let container_title = "<h1 class='container-title'>" + container.checklist_title + "</h1>";
-//     let sub_topics = get_subtopics(container.sub_titles);
-//     let container_tail = "\n</div>";
-//     return container_head + container_title + sub_topics + container_tail;
-// }
-
 function get_topic(topic) {
     return `<div class='topic'>
                <div class="topic-head">
