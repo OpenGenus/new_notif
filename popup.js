@@ -46,8 +46,8 @@ const url = chrome.runtime.getURL("./checklist.json");
 function get_topic(topic) {
     return `<div class='topic'>
                <div class="topic-head">
-                  <input type="checkbox">
                   <h3 class="topic-title">
+                  <input type="checkbox">
                      ${topic.title}
                   </h3>
                   <label class="plus-minus-btn">
