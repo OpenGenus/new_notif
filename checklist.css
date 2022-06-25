@@ -43,7 +43,7 @@
 }
 
 .topic-title {
-    font-size: calc(14px + 0.1vmax);
+    font-size: calc(13px + 0.3vmax);
     flex-wrap: wrap;
 }
 
