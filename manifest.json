@@ -13,7 +13,6 @@
     },
     "host_permissions": ["https://iq.opengenus.org/*"],
     "action": {
-        "default_popup": "popup.html",
         "default_icon": {
             "32": "./static/icon32x32.png"
         }

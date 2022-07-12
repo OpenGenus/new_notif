@@ -123,20 +123,13 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
     });
 });
 
-// Opening popup.html onclick of contextMenu
-chrome.contextMenus.onClicked.addListener(
-    () => {
-        chrome.tabs.create({
-            "active": true,
-            "url": "popup.html"
-        });
-    }
-);
-
-// opening popup.html onclick of notification
-chrome.notifications.onClicked.addListener(() => {
-    chrome.tabs.create({
-        "active": true,
-        "url": "popup.html"
-    });
+[chrome.contextMenus, chrome.notifications, chrome.action].forEach((wannabe_on_click_tab) => {
+    wannabe_on_click_tab.onClicked.addListener(
+        () => {
+            chrome.tabs.create({
+                "active": true,
+                "url": "popup.html"
+            });
+        }
+    );
 });
