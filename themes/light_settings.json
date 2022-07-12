@@ -1,0 +1,26 @@
+[{
+        "query": "header",
+        "properties": [
+            ["background", "linear-gradient(135deg, #351ded 0, #5e46c9 64%, #05abe0 100%)"]
+        ]
+    },
+    {
+        "query": "body",
+        "properties": [
+            ["background", "#f4f8fb"],
+            ["color", "black"]
+        ]
+    },
+    {
+        "query": "html",
+        "properties": [
+            ["color-scheme", "light !important"]
+        ]
+    },
+    {
+        "query": ".setting",
+        "properties": [
+            ["background", "white"]
+        ]
+    }
+]

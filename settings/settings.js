@@ -1,3 +1,27 @@
+// THEME FUNCTIONS
+function load_theme_from_json(theme) {
+    theme.forEach(
+        (change) => {
+            let elementList = document.querySelectorAll(change.query);
+            // add properties for elements
+            elementList.forEach((element) => {
+                // now properties to element
+                change.properties.forEach((property) => {
+                    element.style[property[0]] = property[1];
+                });
+            });
+        }
+    );
+}
+
+function load_theme(theme_url) {
+    fetch(theme_url)
+        .then((res) => res.json())
+        .then((theme) => load_theme_from_json(theme));
+}
+// ENDING
+// THEME FUNCTIONS
+
 const theme_checkbox = document.getElementById("theme_checkbox");
 const time_option = document.getElementById("time");
 const radio_minimal = document.getElementById("radio-0");
@@ -9,15 +33,12 @@ const radio_full = document.getElementById("radio-2");
 
 // The page should show the current settings when loaded....
 chrome.storage.sync.get(["theme", "load", "notif_verbosity", "refresh_time"], (settings) => {
-    let theme = settings.theme;
-    let notif = settings.notif_verbosity;
-    let re_time = settings.refresh_time;
+    const theme_url = chrome.runtime.getURL("./themes/"+settings.theme+"_settings.json");
+    const notif = settings.notif_verbosity;
+    const re_time = settings.refresh_time;
 
-    if (theme === "light") {
-        theme_checkbox.checked = false;
-    } else {
-        theme_checkbox.checked = true;
-    }
+    theme_checkbox.checked = settings.theme === "dark";
+    load_theme(theme_url);
 
     //
     // let load = settings.load;
@@ -53,6 +74,9 @@ theme_checkbox.addEventListener('change', function () {
     chrome.storage.sync.set({
         "theme": theme
     });
+    // change theme of the page as well.
+    const theme_url = chrome.runtime.getURL("./themes/"+theme+"_settings.json");
+    load_theme(theme_url);
 });
 
 // refresh and remind (days)
