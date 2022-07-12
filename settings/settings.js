@@ -59,9 +59,11 @@ theme_checkbox.addEventListener('change', function () {
 time.addEventListener('change', function () {
     var selected_time = parseInt(this.value[0]);
     console.log(selected_time);
-    chrome.storage.sync.set({
-        "refresh_time": selected_time
-    });
+    if (selected_time < 10 && selected_time > 0) {
+        chrome.storage.sync.set({
+            "refresh_time": selected_time
+        });
+    }
 });
 
 // Notification verbosity level
