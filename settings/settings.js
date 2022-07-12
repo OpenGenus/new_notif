@@ -29,7 +29,7 @@ chrome.storage.sync.get(["theme", "load", "notif_verbosity", "refresh_time"], (s
     // }
 
     // notification verbosity
-    document.getElementById("radio-" + notif).checked = true;
+    // document.getElementById("radio-" + notif).checked = true;
     var s = "s";
     if (re_time <= 1) {
         s = "";
@@ -65,21 +65,21 @@ time.addEventListener('change', function () {
 });
 
 // Notification verbosity level
-radio_minimal.addEventListener('click', () => {
-    chrome.storage.sync.set({
-        "notif_verbosity" : 0
-    });
-});
-radio_medium.addEventListener('click', () => {
-    chrome.storage.sync.set({
-        "notif_verbosity": 1
-    });
-});
-radio_full.addEventListener('click', () => {
-    chrome.storage.sync.set({
-        "notif_verbosity": 2
-    });
-});
+// radio_minimal.addEventListener('click', () => {
+//     chrome.storage.sync.set({
+//         "notif_verbosity" : 0
+//     });
+// });
+// radio_medium.addEventListener('click', () => {
+//     chrome.storage.sync.set({
+//         "notif_verbosity": 1
+//     });
+// });
+// radio_full.addEventListener('click', () => {
+//     chrome.storage.sync.set({
+//         "notif_verbosity": 2
+//     });
+// });
 
 // Load all / load _ No. of recent articles
 // require function keyword to use "this".
