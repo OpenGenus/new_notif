@@ -2,7 +2,7 @@
 const minutes_day = 1440;
 const topics = document.getElementById("tab-topics");
 const to_settings_btn = document.getElementById("btn");
-to_settings_btn.addEventListener('click', ()=> {
+to_settings_btn.addEventListener('click', () => {
     chrome.tabs.create({
         "active": true,
         "url": "settings/settings.html"
@@ -15,8 +15,8 @@ function append_topic(topic) {
     for (let a in topic) {
         card = card + "<br>" + topic[a];
     }
-    topics.innerHTML = topics.innerHTML
-        + card;
+    topics.innerHTML = topics.innerHTML +
+        card;
 }
 
 // ENDING of declared codes.
@@ -95,7 +95,7 @@ fetch(url)
         for (let i = 0; i < checklist_checkbox.length; i++) {
             // console.log(checklist_topic_descs[topic]);
             // console.log(checklist_topic_descs[i].classList.toggle("topic-hide"));
-            checklist_checkbox[i].addEventListener('change', function () {
+            checklist_checkbox[i].addEventListener('change', function() {
                 console.log(this);
                 console.log(checklist_topic_descs[i].classList.toggle("topic-hide"));
             });
