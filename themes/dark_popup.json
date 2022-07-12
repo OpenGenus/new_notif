@@ -1,0 +1,51 @@
+[
+    {
+        "query": "header",
+        "properties": [
+            ["background", "linear-gradient(135deg, #2c17ce 0px, #4b36aa 64%, #0b9cca 100%)"]
+        ]
+    },
+    {
+        "query": "body",
+        "properties":[
+            ["background", "#252829"],
+            ["color", "#f2eee9"]
+        ]
+    },
+    {
+        "query": "html",
+        "properties": [
+            ["color-scheme", "dark !important"]
+        ]
+    },
+    {
+        "query": ".container",
+        "properties": [
+            ["background", "#212324"]
+        ]
+    },
+    {
+        "query": ".vertical",
+        "properties": [
+            ["background", "rgba(215, 215, 215, 0.5)"]
+        ]
+    },
+    {
+        "query": ".horizontal",
+        "properties": [
+            ["background", "rgba(215, 215, 215, 0.5)"]
+        ]
+    },
+    {
+        "query": ".plus-minus-checkbox:checked + .vertical ",
+        "properties": [
+            ["background", "rgba(40, 40, 40, 0.0)"]
+        ]
+    },
+    {
+        "query": "a",
+        "properties": [
+            ["color", "rgb(68, 198, 255)"]
+        ]
+    }
+]

@@ -1,0 +1,50 @@
+[{
+        "query": "header",
+        "properties": [
+            ["background", "linear-gradient(135deg, #351ded 0, #5e46c9 64%, #05abe0 100%)"]
+        ]
+    },
+    {
+        "query": "body",
+        "properties": [
+            ["background", "#f4f8fb"],
+            ["color", "black"]
+        ]
+    },
+    {
+        "query": "html",
+        "properties": [
+            ["color-scheme", "dark !important"]
+        ]
+    },
+    {
+        "query": ".container",
+        "properties": [
+            ["background", "white"]
+        ]
+    },
+    {
+        "query": ".vertical",
+        "properties": [
+            ["background", "rgba(40, 40, 40, 0.5)"]
+        ]
+    },
+    {
+        "query": ".horizontal",
+        "properties": [
+            ["background", "rgba(40, 40, 40, 0.5)"]
+        ]
+    },
+    {
+        "query": ".plus-minus-checkbox:checked + .vertical ",
+        "properties": [
+            ["background", "rgba(40, 40, 40, 0.0)"]
+        ]
+    },
+    {
+        "query": "a",
+        "properties": [
+            ["color", "#26a8ed"]
+        ]
+    }
+]
