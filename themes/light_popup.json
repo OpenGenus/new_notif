@@ -14,7 +14,7 @@
     {
         "query": "html",
         "properties": [
-            ["color-scheme", "dark !important"]
+            ["color-scheme", "light !important"]
         ]
     },
     {
