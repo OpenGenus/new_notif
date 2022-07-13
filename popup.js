@@ -1,4 +1,6 @@
 // Declared codes, (code that only runs when called)
+let checked_checklist = JSON.parse(localStorage.getItem('checklist')) || [];
+//
 const minutes_day = 1440;
 const topics = document.getElementById("tab-topics");
 const to_settings_btn = document.getElementById("btn");
@@ -47,7 +49,7 @@ function get_topic(topic) {
     return `<div class='topic'>
                <div class="topic-head">
                   <h3 class="topic-title">
-                  <input type="checkbox">
+                  <input id='${topic.title.replace(/\s+/gm,'').toLowerCase()}' type="checkbox">
                      ${topic.title}
                   </h3>
                   <label class="plus-minus-btn">
@@ -90,15 +92,27 @@ fetch(url)
     .then(() => {
         let checklist_checkbox = document.getElementsByClassName("plus-minus-checkbox");
         let checklist_topic_descs = document.getElementsByClassName("topic-desc");
-        // console.log(checklist_checkbox);
-        // console.log(checklist_topic_descs);
+        let checklist_topic_title = document.getElementsByClassName("topic-title");
+        let topic_checkbox = document.querySelectorAll(".topic-title input");
         for (let i = 0; i < checklist_checkbox.length; i++) {
-            // console.log(checklist_topic_descs[topic]);
-            // console.log(checklist_topic_descs[i].classList.toggle("topic-hide"));
+            // EL to animate .topic-info
             checklist_checkbox[i].addEventListener('change', function() {
                 checklist_topic_descs[i].classList.toggle("topic-hide");
             });
+            // EL to add (if done or not) to storage sync.
+            topic_checkbox[i].addEventListener('change', function() {
+                if (this.checked) {
+                    checked_checklist.push(this.id);
+                } else {
+                    checked_checklist.pop(this.id);
+                }
+                localStorage.setItem('checklist', JSON.stringify(checked_checklist));
+            });
         }
+        // check the boxes
+        checked_checklist.forEach((checkbox)=> {
+            document.getElementById(checkbox).checked = true;
+        });
     });
 
 // Loading theme after all above pre-loading
