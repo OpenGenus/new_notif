@@ -1,5 +1,4 @@
-[
-    {
+[{
         "query": "header",
         "properties": [
             ["background", "linear-gradient(135deg, #2c17ce 0px, #4b36aa 64%, #0b9cca 100%)"]
@@ -7,15 +6,9 @@
     },
     {
         "query": "body",
-        "properties":[
+        "properties": [
             ["background", "#252829"],
             ["color", "#f2eee9"]
-        ]
-    },
-    {
-        "query": "html",
-        "properties": [
-            ["color-scheme", "dark !important"]
         ]
     },
     {
@@ -46,6 +39,12 @@
         "query": "a",
         "properties": [
             ["color", "rgb(68, 198, 255)"]
+        ]
+    },
+    {
+        "query": ".topic-title",
+        "properties": [
+            ["text-decoration-color", "white"]
         ]
     }
 ]

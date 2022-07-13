@@ -12,12 +12,6 @@
         ]
     },
     {
-        "query": "html",
-        "properties": [
-            ["color-scheme", "light !important"]
-        ]
-    },
-    {
         "query": ".container",
         "properties": [
             ["background", "white"]
@@ -45,6 +39,12 @@
         "query": "a",
         "properties": [
             ["color", "#26a8ed"]
+        ]
+    },
+    {
+        "query": ".topic-title",
+        "properties": [
+            ["text-decoration-color", "black"]
         ]
     }
 ]

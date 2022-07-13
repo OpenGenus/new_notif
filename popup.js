@@ -48,15 +48,15 @@ const url = chrome.runtime.getURL("./checklist.json");
 function get_topic(topic) {
     return `<div class='topic'>
                <div class="topic-head">
-                  <h3 class="topic-title">
                   <input id='${topic.title.replace(/\s+/gm,'').toLowerCase()}' type="checkbox">
+                  <h3 class="topic-title">
                      ${topic.title}
+                     <label class="plus-minus-btn">
+                        <input class="plus-minus-checkbox" type="checkbox">
+                        <span class="vertical"></span>
+                        <span class="horizontal"></span>
+                     </label>
                   </h3>
-                  <label class="plus-minus-btn">
-                     <input class="plus-minus-checkbox" type="checkbox">
-                     <span class="vertical"></span>
-                     <span class="horizontal"></span>
-                  </label>
                </div>
                <p class="topic-desc topic-hide">
                    ${topic.info}
@@ -94,10 +94,10 @@ fetch(url)
         let checklist_topic_descs = document.getElementsByClassName("topic-desc");
         let checklist_topic_title = document.getElementsByClassName("topic-title");
         let checklist_topic_head = document.getElementsByClassName("topic-head");
-        let topic_checkbox = document.querySelectorAll(".topic-title input");
+        let topic_checkbox = document.querySelectorAll(".topic-head input");
         for (let i = 0; i < 100; i++) {
             // EL to animate .topic-info
-            checklist_topic_head[i].addEventListener('click', function() {
+            checklist_topic_title[i].addEventListener('click', function() {
                 checklist_topic_descs[i].classList.toggle("topic-hide");
                 checklist_checkbox[i].checked = !(checklist_checkbox[i].checked);
             });
@@ -108,9 +108,13 @@ fetch(url)
             topic_checkbox[i].addEventListener('change', function() {
                 if (this.checked) {
                     checked_checklist.push(this.id);
+                    this.parentElement.getElementsByClassName("topic-title")[0].style['text-decoration'] = 'line-through';
                 } else {
                     checked_checklist.pop(this.id);
+                    this.parentElement.getElementsByClassName("topic-title")[0].style['text-decoration'] = 'line-through';
                 }
+                // A strike-through
+                //
                 let stringified = JSON.stringify(checked_checklist);
                 localStorage.setItem('checklist', stringified);
                 // also storing for someone with sync enabled.
@@ -120,8 +124,10 @@ fetch(url)
             });
         }
         // check the boxes
-        checked_checklist.forEach((checkbox) => {
-            document.getElementById(checkbox).checked = true;
+        checked_checklist.forEach((checkbox_id) => {
+            let checkbox = document.getElementById(checkbox_id);
+            checkbox.checked = true;
+            checkbox.parentElement.getElementsByClassName("topic-title")[0].style['text-decoration'] = 'line-through';
         });
     });
 
