@@ -93,9 +93,14 @@ fetch(url)
         let checklist_checkbox = document.getElementsByClassName("plus-minus-checkbox");
         let checklist_topic_descs = document.getElementsByClassName("topic-desc");
         let checklist_topic_title = document.getElementsByClassName("topic-title");
+        let checklist_topic_head = document.getElementsByClassName("topic-head");
         let topic_checkbox = document.querySelectorAll(".topic-title input");
-        for (let i = 0; i < checklist_checkbox.length; i++) {
+        for (let i = 0; i < 100; i++) {
             // EL to animate .topic-info
+            checklist_topic_head[i].addEventListener('click', function() {
+                checklist_topic_descs[i].classList.toggle("topic-hide");
+                checklist_checkbox[i].checked = !(checklist_checkbox[i].checked);
+            });
             checklist_checkbox[i].addEventListener('change', function() {
                 checklist_topic_descs[i].classList.toggle("topic-hide");
             });
