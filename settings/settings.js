@@ -1,27 +1,3 @@
-// THEME FUNCTIONS
-function load_theme_from_json(theme) {
-    theme.forEach(
-        (change) => {
-            let elementList = document.querySelectorAll(change.query);
-            // add properties for elements
-            elementList.forEach((element) => {
-                // now properties to element
-                change.properties.forEach((property) => {
-                    element.style[property[0]] = property[1];
-                });
-            });
-        }
-    );
-}
-
-function load_theme(theme_url) {
-    fetch(theme_url)
-        .then((res) => res.json())
-        .then((theme) => load_theme_from_json(theme));
-}
-// ENDING
-// THEME FUNCTIONS
-
 const theme_checkbox = document.getElementById("theme_checkbox");
 const time_option = document.getElementById("time");
 const radio_minimal = document.getElementById("radio-0");
@@ -33,12 +9,11 @@ const radio_full = document.getElementById("radio-2");
 
 // The page should show the current settings when loaded....
 chrome.storage.sync.get(["theme", "load", "notif_verbosity", "refresh_time"], (settings) => {
-    const theme_url = chrome.runtime.getURL("./themes/"+settings.theme+"_settings.json");
     const notif = settings.notif_verbosity;
     const re_time = settings.refresh_time;
 
     theme_checkbox.checked = settings.theme === "dark";
-    load_theme(theme_url);
+    load_theme(settings.theme, "settings");
 
     //
     // let load = settings.load;
@@ -64,7 +39,7 @@ chrome.storage.sync.get(["theme", "load", "notif_verbosity", "refresh_time"], (s
 // 2. detect and store the change to sync storage
 
 // theme light/dark
-theme_checkbox.addEventListener('change', function () {
+theme_checkbox.addEventListener('change', function() {
     var theme = "";
     if (this.checked) {
         theme = "dark";
@@ -75,12 +50,11 @@ theme_checkbox.addEventListener('change', function () {
         "theme": theme
     });
     // change theme of the page as well.
-    const theme_url = chrome.runtime.getURL("./themes/"+theme+"_settings.json");
-    load_theme(theme_url);
+    load_theme(theme, "settings");
 });
 
 // refresh and remind (days)
-time.addEventListener('change', function () {
+time.addEventListener('change', function() {
     var selected_time = parseInt(this.value[0]);
     console.log(selected_time);
     if (selected_time < 10 && selected_time > 0) {

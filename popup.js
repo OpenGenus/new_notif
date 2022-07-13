@@ -103,25 +103,15 @@ fetch(url)
     });
 
 // Loading theme after all above pre-loading
-// before that a function to load from theme.json
-function load_theme(theme) {
-    theme.forEach(
-        (change) => {
-            let elementList = document.querySelectorAll(change.query);
-            // add properties for elements
-            elementList.forEach((element) => {
-                // now properties to element
-                change.properties.forEach((property) => {
-                    element.style[property[0]] = property[1];
-                });
-            });
-        }
-    );
-}
-
 chrome.storage.sync.get(["theme"], (settings) => {
-    const theme_url = chrome.runtime.getURL("./themes/"+settings.theme+"_popup.json");
-    fetch(theme_url)
-        .then((res) => res.json())
-        .then((theme) => load_theme(theme));
+    load_theme(settings.theme, "popup");
 });
+
+// theme should be loaded on change of theme.
+chrome.storage.onChanged.addListener(
+    (changes, areaname) => {
+        if (changes.theme != null) {
+            load_theme(changes.theme.newValue, "popup");
+        }
+    }
+);
