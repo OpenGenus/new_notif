@@ -96,8 +96,7 @@ fetch(url)
             // console.log(checklist_topic_descs[topic]);
             // console.log(checklist_topic_descs[i].classList.toggle("topic-hide"));
             checklist_checkbox[i].addEventListener('change', function() {
-                console.log(this);
-                console.log(checklist_topic_descs[i].classList.toggle("topic-hide"));
+                checklist_topic_descs[i].classList.toggle("topic-hide");
             });
         }
     });
