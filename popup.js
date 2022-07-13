@@ -101,16 +101,21 @@ fetch(url)
             });
             // EL to add (if done or not) to storage sync.
             topic_checkbox[i].addEventListener('change', function() {
+                let stringified = JSON.stringify(checked_checklist);
                 if (this.checked) {
                     checked_checklist.push(this.id);
                 } else {
                     checked_checklist.pop(this.id);
                 }
-                localStorage.setItem('checklist', JSON.stringify(checked_checklist));
+                localStorage.setItem('checklist', stringified);
+                // also storing for someone with sync enabled.
+                chrome.storage.sync.set({
+                    "checklist": stringified
+                });
             });
         }
         // check the boxes
-        checked_checklist.forEach((checkbox)=> {
+        checked_checklist.forEach((checkbox) => {
             document.getElementById(checkbox).checked = true;
         });
     });
