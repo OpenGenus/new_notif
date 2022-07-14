@@ -49,8 +49,6 @@ theme_checkbox.addEventListener('change', function() {
     chrome.storage.sync.set({
         "theme": theme
     });
-    // change theme of the page as well.
-    load_theme(theme, "settings");
 });
 
 // refresh and remind (days)
@@ -112,3 +110,12 @@ time.addEventListener('change', function() {
 //         });
 //     }
 // });
+
+// theme should be loaded on change of theme.
+chrome.storage.onChanged.addListener(
+    (changes, areaname) => {
+        if (changes.theme != null) {
+            load_theme(changes.theme.newValue, "settings");
+        }
+    }
+);
