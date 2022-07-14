@@ -24,7 +24,24 @@ chrome.alarms.clearAll();
 
 // CHECKLIST requires lots of ELs
 // and localStorage
-let checked_checklist = JSON.parse(localStorage.getItem('checklist')) || [];
+
+function to_array(set) {
+    let array = [];
+    set.forEach((elem) => {
+        array.push(elem);
+    });
+    return array;
+}
+
+function to_set(arr) {
+    let set = new Set();
+    arr.forEach((elem) => {
+        set.add(elem);
+    });
+    return set;
+}
+
+let checked_checklist = to_set(JSON.parse(localStorage.getItem('checklist'))) || new Set();
 let checklist_checkbox = document.getElementsByClassName("plus-minus-checkbox");
 let checklist_topic_descs = document.getElementsByClassName("topic-desc");
 let checklist_topic_title = document.getElementsByClassName("topic-title");
@@ -42,15 +59,15 @@ for (let i = 0; i < 100; i++) {
     // EL to add (if done or not) to storage sync.
     topic_checkbox[i].addEventListener('change', function() {
         if (this.checked) {
-            checked_checklist.push(this.id);
+            checked_checklist.add(this.id);
             this.parentElement.getElementsByClassName("topic-title")[0].style['text-decoration'] = 'line-through';
         } else {
-            checked_checklist.pop(this.id);
-            this.parentElement.getElementsByClassName("topic-title")[0].style['text-decoration'] = 'line-through';
+            checked_checklist.delete(this.id);
+            this.parentElement.getElementsByClassName("topic-title")[0].style['text-decoration'] = 'none';
         }
         // A strike-through
         //
-        let stringified = JSON.stringify(checked_checklist);
+        let stringified = JSON.stringify(to_array(checked_checklist));
         localStorage.setItem('checklist', stringified);
         // also storing for someone with sync enabled.
         chrome.storage.sync.set({
