@@ -9,10 +9,10 @@ const radio_full = document.getElementById("radio-2");
 
 // The page should show the current settings when loaded....
 chrome.storage.sync.get(["theme", "load", "notif_verbosity", "refresh_time"], (settings) => {
-    const notif = settings.notif_verbosity;
+    // const notif = settings.notif_verbosity;
     const re_time = settings.refresh_time;
 
-    theme_checkbox.checked = settings.theme === "dark";
+    theme_checkbox.checked = (settings.theme === "dark");
     load_theme(settings.theme, "settings");
 
     //
@@ -113,9 +113,10 @@ time.addEventListener('change', function() {
 
 // theme should be loaded on change of theme.
 chrome.storage.onChanged.addListener(
-    (changes, areaname) => {
-        if (changes.theme != null) {
+    (changes, _areaname) => {
+        if (changes.theme.newValue != undefined) {
             load_theme(changes.theme.newValue, "settings");
+            theme_checkbox.checked = (changes.theme.newValue === "dark");
         }
     }
 );

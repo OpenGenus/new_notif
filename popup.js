@@ -74,7 +74,7 @@ chrome.storage.sync.get(["theme"], (settings) => {
 
 // theme should be loaded on change of theme.
 chrome.storage.onChanged.addListener(
-    (changes, areaname) => {
+    (changes, _areaname) => {
         if (changes.theme != null) {
             load_theme(changes.theme.newValue, "popup");
         }
