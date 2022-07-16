@@ -30,12 +30,6 @@
         ]
     },
     {
-        "query": ".plus-minus-checkbox:checked + .vertical ",
-        "properties": [
-            ["background", "rgba(40, 40, 40, 0.0)"]
-        ]
-    },
-    {
         "query": "a",
         "properties": [
             ["color", "#26a8ed"]

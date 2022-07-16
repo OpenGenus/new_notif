@@ -37,8 +37,17 @@
 .topic-head {
     height: 39px;
     width: 80%;
+    padding-left: 5px;
     display: flex;
     align-items: center;
+    transition-property: box-shadow width height;
+    transition-duration: 0.4s;
+}
+
+.topic-head:hover {
+    box-shadow: 0 1px 2px #05abe0;
+    width: 81%;
+    height: 42px;
 }
 
 .topic-head input {
@@ -79,7 +88,7 @@
     height: 21px;
     width: 5px;
     background-color: rgba(40, 40, 40, 0.5);
-    transition: 0.34s transform cubic-bezier(0, 0, 0.04, 1.45), 0.34s 0.19s background-color;
+    transition: 0.34s transform cubic-bezier(0, 0, 0.04, 1.45), 0.34s 0.19s opacity;
 }
 
 .horizontal {
@@ -93,7 +102,7 @@
 
 .plus-minus-checkbox:checked+.vertical {
     transform: rotate(270deg);
-    background-color: rgba(40, 40, 40, 0.0);
+    opacity: 0.0;
     /* height: 5px; */
     /* width: 21px; */
     /* top: 9px; */
@@ -114,7 +123,6 @@
 }
 
 .topic-hide {
-    transition: 0.19s;
     font-size: 0px;
     height: 0px;
     display: none;
