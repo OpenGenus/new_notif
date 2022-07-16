@@ -48,7 +48,14 @@ header {
     width: 30%;
     margin: 8px;
     border-radius: 9px;
-    min-height: 20%;
+    padding-bottom: 90px;
+}
+
+@media (max-width: 1100px ) {
+    .setting {
+        width: 80%;
+        padding-bottom: 35px;
+    }
 }
 
 .settings-head {
