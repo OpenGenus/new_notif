@@ -1,4 +1,4 @@
-function article_to_html(article) {}
+function article_to_html(_article) {}
 
 async function load_topics() {
     // topics example

@@ -83,7 +83,7 @@
 
 .vertical {
     position: absolute;
-    top: 1px;
+    top: 12px;
     right: 9px;
     height: 21px;
     width: 5px;
@@ -93,7 +93,7 @@
 
 .horizontal {
     position: absolute;
-    top: 9px;
+    top: 20px;
     right: 1px;
     height: 5px;
     width: 21px;
