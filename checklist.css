@@ -9,6 +9,37 @@
     flex-direction: column;
 }
 
+#checklist-status {
+    width: 90%;
+}
+
+#checklist-status button {
+    margin: 10px;
+    /*
+      color, background are theme based.
+     */
+}
+
+#checklist-status-number {
+    display: inline-block;
+    vertical-align: sub;
+    /* color: rgb(170, 170, 170); */
+}
+
+#global-progress-bar-head {
+    width: 100%;
+    height: 1px;
+    /* background: #05abe0; */
+}
+
+#global-progress-bar {
+    width: 0px;
+    height: 4px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    /* background:; */
+}
+
 .container {
     width: 100%;
     background-color: white;
@@ -112,6 +143,15 @@
 .sub-topics {
     display: flex;
     flex-direction: column;
+}
+
+.sub-topics::before {
+    content: "";
+    width: 94%;
+    height: 1px;
+    margin-bottom: 10px;
+    margin-left: 3%;
+    background: white;
 }
 
 .topic-desc {

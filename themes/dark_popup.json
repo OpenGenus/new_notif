@@ -18,6 +18,32 @@
         ]
     },
     {
+        "query": "#checklist-status button",
+        "properties": [
+            ["color", "white"],
+            ["background", "#4b36aa"]
+        ]
+
+    },
+    {
+        "query": "#checklist-status-number",
+        "properties": [
+            ["color", "#aaa"]
+        ]
+    },
+    {
+        "query": "#global-progress-bar-head",
+        "properties": [
+            ["background", "linear-gradient(135deg, #2c17ce 0px, #4b36aa 64%, #0b9cca 100%)"]
+        ]
+    },
+    {
+        "query": "#global-progress-bar",
+        "properties": [
+            ["background", "linear-gradient(135deg, #2c17ce 0px, #4b36aa 64%, #0b9cca 100%)"]
+        ]
+    },
+    {
         "query": ".vertical",
         "properties": [
             ["background", "rgba(215, 215, 215, 0.5)"]
