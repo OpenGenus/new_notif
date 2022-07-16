@@ -28,15 +28,6 @@ chrome.runtime.onInstalled.addListener(function() {
         "session_start": 0
     });
 
-    // loading checklist. if available
-    chrome.storage.sync.get(['checklist'], (store) => {
-        if(store.checklist === undefined){
-            localStorage.setItem('checklist', '[]');
-        } else {
-            localStorage.setItem('checklist', JSON.stringify(store.checklist));
-        }
-    });
-
     // topics
     load_topics().then(topics => {
         chrome.storage.local.set({

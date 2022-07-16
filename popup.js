@@ -41,7 +41,6 @@ function to_set(arr) {
     return set;
 }
 
-let checked_checklist = to_set(JSON.parse(localStorage.getItem('checklist'))) || new Set();
 let checklist_checkbox = document.getElementsByClassName("plus-minus-checkbox");
 let checklist_topic_descs = document.getElementsByClassName("topic-desc");
 let checklist_topic_title = document.getElementsByClassName("topic-title");
@@ -54,34 +53,45 @@ for (let i = 0; i < 100; i++) {
         checklist_checkbox[i].checked = !(checklist_checkbox[i].checked);
     });
     checklist_checkbox[i].addEventListener('change', function() {
-        checklist_topic_descs[i].classList.toggle("topic-hide");
-    });
-    // EL to add (if done or not) to storage sync.
-    topic_checkbox[i].addEventListener('change', function() {
-        if (this.checked) {
-            checked_checklist.add(this.id);
-            this.parentElement.getElementsByClassName("topic-title")[0].style['text-decoration'] = 'line-through';
-        } else {
-            checked_checklist.delete(this.id);
-            this.parentElement.getElementsByClassName("topic-title")[0].style['text-decoration'] = 'none';
-        }
-        // A strike-through
-        //
-        let stringified = JSON.stringify(to_array(checked_checklist));
-        localStorage.setItem('checklist', stringified);
-        // also storing for someone with sync enabled.
-        chrome.storage.sync.set({
-            "checklist": stringified
-        });
+        checklist_topic_descs[i].classList.toggle('topic-hide');
     });
 }
-// check the boxes
-checked_checklist.forEach((checkbox_id) => {
-    let checkbox = document.getElementById(checkbox_id);
-    checkbox.checked = true;
-    checkbox.parentElement.getElementsByClassName("topic-title")[0].style['text-decoration'] = 'line-through';
-});
 
+chrome.storage.sync.get(["checklist"])
+    .then((cl) => {
+        let checked_checklist = (cl.checklist === undefined) ?
+            new Set() :
+            to_set(JSON.parse(cl.checklist));
+
+        for (let i = 0; i < 100; i++) {
+            // EL to add (if done or not) to storage sync.
+            topic_checkbox[i].addEventListener('change', function() {
+                if (this.checked) {
+                    checked_checklist.add(this.id);
+                    this.parentElement.getElementsByClassName("topic-title")[0].style['text-decoration'] = 'line-through';
+                } else {
+                    checked_checklist.delete(this.id);
+                    this.parentElement.getElementsByClassName("topic-title")[0].style['text-decoration'] = 'none';
+                }
+                // A strike-through
+                //
+                let stringified = JSON.stringify(to_array(checked_checklist));
+                localStorage.setItem('checklist', stringified);
+                // also storing for someone with sync enabled.
+                chrome.storage.sync.set({
+                    "checklist": stringified
+                });
+            });
+        }
+
+        // check the boxes
+        checked_checklist.forEach((checkbox_id) => {
+            let checkbox = document.getElementById(checkbox_id);
+            checkbox.checked = true;
+            checkbox.parentElement.getElementsByClassName("topic-title")[0].style['text-decoration'] = 'line-through';
+        });
+
+    });
 
 
 // Loading theme after all above pre-loading
