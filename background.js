@@ -1,16 +1,3 @@
-function article_to_html(_article) {}
-
-async function load_topics() {
-    // topics example
-    let topics = [
-        ["hello", "working"],
-    ];
-
-    //let res = await fetch("https://iq.opengenus.org/");
-    //res = await res.text();
-    return topics;
-}
-
 chrome.runtime.onInstalled.addListener(function() {
     // set settings
     chrome.storage.sync.set({
@@ -26,13 +13,6 @@ chrome.runtime.onInstalled.addListener(function() {
 
     chrome.storage.local.set({
         "session_start": 0
-    });
-
-    // topics
-    load_topics().then(topics => {
-        chrome.storage.local.set({
-            "topics": topics,
-        });
     });
 
     // Initial alarm
@@ -68,7 +48,10 @@ chrome.runtime.onStartup.addListener(
                         "delayInMinutes": 0 // default time for now.
                     });
                     console.log("created alarm!");
+                } else {
+                    console.log("Alarm not created! Time gap:" + days);
                 }
+                console.log("On Startup Function ran!");
             });
     }
 );
@@ -128,7 +111,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
         () => {
             chrome.tabs.create({
                 "active": true,
-                "url": "popup.html"
+                "url": "./checklist/checklist.html"
             });
         }
     );
