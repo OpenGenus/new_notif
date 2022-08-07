@@ -1,9 +1,10 @@
-let checkboxValues = JSON.parse(localStorage.getItem("checkboxValues")) || {};
+let checkbox_values = JSON.parse(localStorage.getItem("checkboxValues")) || {};
 chrome.storage.sync.get(["checklist"])
     .then((cl) => {
-        checkboxValues = (cl.checklist === undefined) ? {} :
+        checkbox_values = (cl.checklist === undefined) ? {} :
             JSON.parse(localStorage.getItem("checkboxValues"));
     });
+const checkboxValues = checkbox_values;
 
 const buttons = Array.from(document.querySelectorAll(".checklist-item__expand")),
     labels = Array.from(document.querySelectorAll(".checklist-item__title")),
