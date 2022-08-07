@@ -108,3 +108,12 @@ chrome.storage.sync.get(
 // Loading theme when changed
 chrome.storage.onChanged.addListener(
     (changes, _) => changes.theme != undefined && (document.getElementById("theme_link").href = "./" + changes.theme.newValue + ".css"));
+
+// settings onclick
+document.getElementById("settings-btn").addEventListener("click", () => {
+    chrome.tabs.create({
+        "active": true,
+        "url": "../settings/settings.html"
+    });
+});
+
