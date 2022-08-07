@@ -117,3 +117,10 @@ document.getElementById("settings-btn").addEventListener("click", () => {
     });
 });
 
+// setting last opened time.
+chrome.storage.local.set({
+    last: Date.now()
+});
+
+// Clearing alarms since page is in view.
+chrome.alarms.clearAll();
