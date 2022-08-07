@@ -8,7 +8,7 @@
     width: var(--size);
     border-radius: 50%;
     border: 0px;
-    background-color: rgba(189, 106, 255);
+    background-color: rgb(189, 106, 255);
     -webkit-box-shadow: 0 4px 6px rgba(33, 16, 118, .11),
                         0 1px 3px rgba(33, 16, 118, .1);
     box-shadow: 0 4px 6px rgba(33, 16, 118, .11), 0 1px 3px rgba(33, 16, 118, .1);
@@ -17,6 +17,11 @@
     align-items: center;
     padding: 0px;
     margin: 0px;
+    transition: background-color 0.2s;
+}
+
+#settings-btn:hover {
+    background-color: rgb(33, 16, 118);
 }
 
 #settings-btn img {
