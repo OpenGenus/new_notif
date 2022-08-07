@@ -110,8 +110,8 @@ body {
     min-height: 100vh;
     margin: 0;
     letter-spacing: .02em;
-    color: #000000;
-    background: #FFFDE8;
+    color: var(--body-color);
+    background: var(--body-background);
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -124,7 +124,7 @@ a {
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
     text-decoration: none;
-    color: #0057FF;
+    color: var(--a-color);
     border-bottom: 1px solid #57eaa6;
     text-shadow: 0 1px 0 #585afa;
 }
@@ -134,12 +134,12 @@ a:hover {
 }
 
 ::-moz-selection {
-    background: rgba(33, 16, 118, .75);
+    background: var(--selection-background);
     text-shadow: none;
 }
 
 ::selection {
-    background: rgba(33, 16, 118, .75);
+    background: var(--selection-background);
     text-shadow: none;
 }
 
@@ -159,7 +159,7 @@ a:hover {
 
 .text_small {
     font-size: 1.5vw;
-    font-weight: 150;
+    font-weight: 170;
     margin: .5em .2em .375em;
     text-align: center;
 }
@@ -197,7 +197,7 @@ a:hover {
     transition: all .3s ease;
     letter-spacing: .025em;
     color: inherit;
-    border: 1px solid #211076;
+    border: 1px solid var(--prog-res-border);
     border-radius: 3px;
     outline: 0;
     background: rgba(33, 16, 118, .75);
@@ -299,7 +299,7 @@ a:hover {
     font-size: 2.125em;
     font-weight: 500;
     margin: 0;
-    color: #000000;
+    color: var(--checklist-title-color);
 }
 
 .checklist__title-border {
@@ -341,7 +341,7 @@ a:hover {
     cursor: pointer;
     -webkit-transition: background 150ms ease;
     transition: background 150ms ease;
-    border: 2px solid #211076;
+    border: 2px solid var(--checkbox-border-color);
     border-radius: 3px;
 }
 
@@ -366,7 +366,7 @@ a:hover {
 }
 
 .checklist-item__title {
-    font-size: 1.125em;
+    font-size: 1.445em;
     line-height: 1.25;
     display: inline-block;
     width: calc(100% - 48px);
@@ -543,7 +543,7 @@ input[type=checkbox]:checked~.checklist-item__title {
         'Droid Sans',
         'Helvetica Neue',
         sans-serif;
-    font-size: 1.063em;
+    font-size: 1.39em;
     line-height: 1.4;
     overflow: hidden;
     max-height: 0;
@@ -564,7 +564,7 @@ input[type=checkbox]:checked~.checklist-item__title {
     margin-top: .55em;
     margin-bottom: .2em;
     padding-bottom: .75em;
-    border-bottom: 1px solid #b5adde;
+    border-bottom: 1px solid var(--info-border-color);
 }
 
 .checklist .open .info-container {

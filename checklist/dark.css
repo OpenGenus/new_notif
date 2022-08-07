@@ -1,0 +1,17 @@
+:root {
+    /* body */
+    --body-color: white;
+    --body-background: rgb(53, 48, 2);
+    /* a tag */
+    --a-color: rgb(28, 182, 255);
+    /* selection */
+    --selection-background: #0044d3 ;
+    /*reset button*/
+    --prog-res-border:rgb(31, 0, 240);
+    /*checklist title*/
+    --checklist-title-color: white;
+    /*Checkboxes*/
+    --checkbox-border-color: #8971ff;
+    /*Info container*/
+    --info-border-color: #8171d5;
+}

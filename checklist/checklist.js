@@ -100,3 +100,11 @@ window.onload = function() {
         !1
     )
 };
+
+// Loading theme
+chrome.storage.sync.get(
+    ['theme'],
+    (settings) => document.getElementById("theme_link").href = "./" + settings.theme + ".css");
+// Loading theme when changed
+chrome.storage.onChanged.addListener(
+    (changes, _) => changes.theme != undefined && (document.getElementById("theme_link").href = "./" + changes.theme.newValue + ".css"));
