@@ -1,0 +1,198 @@
+/*
+background: linear-gradient(135deg, #351ded 0, #5e46c9 64%, #05abe0 100%);
+icon-color: #e7e7e9;
+*/
+
+@font-face {
+    font-family: 'DosisExtraLight';
+    src: url('static/Dosis/Dosis-ExtraLight.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DosisLight';
+    src: url('static/Dosis/Dosis-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DosisMedium';
+    src: url('static/Dosis/Dosis-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DosisRegular';
+    src: url('static/Dosis/Dosis-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'DosisBold';
+    src: url('static/Dosis/Dosis-Bold.ttf') format('truetype');
+}
+
+
+body {
+    margin: 0px;
+    min-width: 500px;
+    background-color: #f4f8fb;
+}
+
+center {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+header {
+    background: linear-gradient(135deg, #351ded 0, #5e46c9 64%, #05abe0 100%);
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 468px;
+}
+
+#head {
+    display: flex;
+    align-items: center;
+}
+
+#head-name {
+    font-family: 'DosisExtraLight';
+    font-size: 68px;
+    font-style: regular;
+    color: white;
+}
+
+#head img {
+    width: 135px;
+    margin-left: 10px;
+    border-radius: 45px;
+}
+
+
+
+header p {
+    font-family: 'DosisBold';
+    font-size: 20px;
+    color: white;
+    width: 45%;
+}
+
+@media (max-width: 942px) {
+    header p {
+        font-size: 16px;
+    }
+}
+
+#buttons {
+    display: flex;
+    align-items: center;
+}
+
+button img {
+    height: 35px;
+}
+
+button,
+#search-bar {
+    margin: 50px 5px;
+    padding: 7px 7px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 19px;
+    transition: border 0.19s;
+}
+
+button:hover {
+    border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+#search-bar {
+    margin-right: -6px;
+    height: 53px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    padding: 0px;
+    padding-left: 10px;
+    font-family: 'DosisExtraLight';
+    font-size: 22px;
+    color: white;
+}
+
+#search-bar:hover {
+    border-color: rgba(255, 255, 255, 0.7);
+    outline: none;
+}
+
+#search-bar::placeholder {
+    font-family: 'DosisExtraLight';
+    font-size: 22px;
+    color: white;
+}
+
+#search {
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+/*
+  Above are the properties for when page is in bigger width
+  Adding @media So, it can fit for the popup.
+*/
+@media (max-width: 565px) {
+    header {
+        flex: 60px;
+        flex-direction: row;
+        padding: 5px;
+        justify-content: space-between;
+        transition: flex 0.21s;
+    }
+
+    #head-name {
+        font-size: 22px;
+        padding-left: 10px;
+    }
+
+    #head img {
+        width: 48px;
+        margin-left: 5px;
+        border-radius: 10px;
+    }
+
+    header p {
+        display: none;
+    }
+
+    button img {
+        height: 28px;
+    }
+
+    button,
+    #search-bar {
+        margin: 0px 5px;
+        padding: 3px 3px;
+        border-radius: 8px;
+    }
+
+    /*
+      maybe should use this.
+    #search,
+    #search-bar {
+        display: none;
+    }
+   */
+
+    #search-bar {
+        margin-right: -6px;
+        height: 38px;
+        border-bottom-right-radius: 0px;
+        border-top-right-radius: 0px;
+        font-size: 19px;
+        padding-left: 10px;
+        padding-top: 0px;
+    }
+
+    #search-bar::placeholder {
+        font-size: 19px;
+    }
+}

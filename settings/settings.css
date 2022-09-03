@@ -1,0 +1,134 @@
+@font-face {
+    font-family: 'DosisExtraLight';
+    src: url('../static/Dosis/Dosis-ExtraLight.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DosisMedium';
+    src: url('../static/Dosis/Dosis-Medium.ttf') format('truetype');
+}
+h1 {
+    font-size: 34px;
+}
+
+* {
+    font-size: 18px;
+    font-family: 'DosisMedium'
+}
+
+
+body {
+    background-color: #f4f8fb;
+    margin: 0px;
+}
+
+header {
+    background: linear-gradient(135deg, #351ded 0, #5e46c9 64%, #05abe0 100%);
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 468px;
+}
+
+#head-name {
+    font-family: 'DosisExtraLight';
+    font-size: 68px;
+    font-style: regular;
+    color: white;
+}
+
+#head-img {
+    width: 135px;
+    margin-left: 10px;
+    border-radius: 45px;
+}
+
+.setting {
+    width: 30%;
+    margin: 8px;
+    border-radius: 9px;
+    padding-bottom: 90px;
+}
+
+@media (max-width: 1100px ) {
+    .setting {
+        width: 80%;
+        padding-bottom: 35px;
+    }
+}
+
+.settings-head {
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+
+/*
+  settings checkbox
+ */
+
+#theme-setting {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 130;
+}
+
+.toggle-button input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.toggle-button {
+    width: 30;
+    height: 20;
+    border: 1px;
+    display: inline-block;
+    position: relative;
+}
+
+.slider {
+    position: absolute;
+    background: #aaa;
+    border-radius: 10px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    transition: 0.19s;
+}
+
+.slider::before {
+    position: absolute;
+    content: " ";
+    width: 12;
+    height: 12;
+    background: white;
+    border-radius: 6px;
+    left: 4px;
+    bottom: 4px;
+    top: 4px;
+    transition: 0.19s;
+}
+
+
+.toggle-button input:checked + .slider {
+    background: linear-gradient(135deg, #351ded 0, #5e46c9 25%, #05abe0 100%);
+}
+
+
+.toggle-button input:checked + .slider::before {
+    right: 4px;
+    left: 14px;
+}
+
+/*
+  settings options
+*/
+
+#time {
+    width: 80px;
+    padding: 2px;
+    padding-left: 7px;
+}

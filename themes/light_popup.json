@@ -1,0 +1,69 @@
+[{
+        "query": "header",
+        "properties": [
+            ["background", "linear-gradient(135deg, #351ded 0, #5e46c9 64%, #05abe0 100%)"]
+        ]
+    },
+    {
+        "query": "body",
+        "properties": [
+            ["background", "#f4f8fb"],
+            ["color", "black"]
+        ]
+    },
+    {
+        "query": ".container",
+        "properties": [
+            ["background", "white"]
+        ]
+    },
+    {
+        "query": "#checklist-status button",
+        "properties": [
+            ["color", "#eee"],
+            ["background", "#5e46c9"]
+        ]
+    },
+    {
+        "query": "#checklist-status-number",
+        "properties": [
+            ["color", "#444"]
+        ]
+    },
+    {
+        "query": "#global-progress-bar-head",
+        "properties": [
+            ["background", "linear-gradient(135deg, #351ded 0, #5e46c9 64%, #05abe0 100%)"]
+        ]
+    },
+    {
+        "query": "#global-progress-bar",
+        "properties": [
+            ["background", "linear-gradient(135deg, #351ded 0, #5e46c9 64%, #05abe0 100%)"]
+        ]
+    },
+    {
+        "query": ".vertical",
+        "properties": [
+            ["background", "rgba(40, 40, 40, 0.5)"]
+        ]
+    },
+    {
+        "query": ".horizontal",
+        "properties": [
+            ["background", "rgba(40, 40, 40, 0.5)"]
+        ]
+    },
+    {
+        "query": "a",
+        "properties": [
+            ["color", "#26a8ed"]
+        ]
+    },
+    {
+        "query": ".topic-title",
+        "properties": [
+            ["text-decoration-color", "black"]
+        ]
+    }
+]
