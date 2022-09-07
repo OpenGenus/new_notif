@@ -1,0 +1,6 @@
+:root {
+    --header-background: linear-gradient(135deg, #2c17ce 0px, #4b36aa 64%, #0b9cca 100%);
+    --body-background: #252829;
+    --body-color: #f2eee9;
+    --setting-background: #212324;
+}

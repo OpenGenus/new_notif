@@ -111,7 +111,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
         () => {
             chrome.tabs.create({
                 "active": true,
-                "url": "./checklist/checklist.html"
+                "url": "./pages/main/index.html"
             });
         }
     );

@@ -111,12 +111,10 @@ time.addEventListener('change', function() {
 //     }
 // });
 
-// theme should be loaded on change of theme.
+// Loading theme
+chrome.storage.sync.get(
+    ['theme'],
+    (settings) => document.getElementById("theme_link").href = "./" + settings.theme + ".css");
+// Loading theme when changed
 chrome.storage.onChanged.addListener(
-    (changes, _areaname) => {
-        if (changes.theme.newValue != undefined) {
-            load_theme(changes.theme.newValue, "settings");
-            theme_checkbox.checked = (changes.theme.newValue === "dark");
-        }
-    }
-);
+    (changes, _) => changes.theme != undefined && (document.getElementById("theme_link").href = "./" + changes.theme.newValue + ".css"));
